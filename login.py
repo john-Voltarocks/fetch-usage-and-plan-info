@@ -54,9 +54,6 @@ def fetch_service_point(access_token):
     "content-type": "application/json",
     "cache-control": "no-cache"
     }
-    # response = requests.request("GET", service_point_url, headers=headers)
-    # response_data = response.json()
-    # return response_data
     response = requests.get(service_point_url, headers=headers)
     response_data = response.json()
     return response_data

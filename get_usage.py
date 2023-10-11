@@ -1,5 +1,3 @@
-import os
-from dotenv import load_dotenv
 import pandas as pd
 from datetime import datetime, timedelta
 import json
@@ -19,7 +17,7 @@ def save_usage_data(usage_data: json):
         start_datetime = datetime.strptime(reading["read_start_date"], "%Y-%m-%d")
 
     # Generate timestamps for each 5-minute interval
-        timestamps = [start_datetime + timedelta(minutes=5) + timedelta(minutes=i*5) for i in range(len(interval_read["interval_reads"]))]
+        timestamps = [start_datetime + timedelta(minutes=i*5) for i in range(len(interval_read["interval_reads"]))]
 
     # Append data for each 5-minute interval
         for i, timestamp in enumerate(timestamps):
@@ -39,5 +37,4 @@ def save_usage_data(usage_data: json):
         df.to_csv("usage_data.csv", index=False)
 
 
-
-
+save_usage_data(usage_data=usage_data)
